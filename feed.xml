@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  {% for channel in channels %}
+  <channel>
+    <title>{{ channel.title }}</title>
+    <description>{{ channel.description }}</description>
+    <lastBuildDate>Mon, 03 Jan 2011 13:41:18 GMT</lastBuildDate>
+    <link>http://emploi.afjv.com</link>
+    <image>
+      <url>http://www.afjv.com/logo/index_files/logo_afjv_100_54.jpg</url>
+      <title>Agence Francaise pour le Jeu Video</title>
+      <link>http://www.emploi.afjv.com</link>
+      <width>100</width>
+      <height>54</height>
+    </image>
+    {% for item in items %}
+    <item>
+      <title>{{ item.title }}</title>
+      <link>{{ item.link }}</link>
+      <description>{{ item.description }}</description>
+      <pubDate>{{ item.pubDate }}</pubDate>
+      <category>{{ item.category0 }}</category>
+      <category>{{ item.category1 }}</category>
+      <category>{{ item.category2 }}</category>
+      <guid>{{ item.guid }}</guid>
+    </item>
+    {% endfor %}
+  </channel>
+  {% endfor %}
+</rss>

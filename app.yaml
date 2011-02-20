@@ -1,0 +1,21 @@
+application: afjvfeed
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /scripts
+  static_dir: scripts
+  
+- url: /stylesheets
+  static_dir: stylesheets
+
+- url: /(.*\.(gif|png|jpg))
+  static_files: static/\1
+  upload: static/(.*\.(gif|png|jpg))
+  
+- url: /feed/(.*)
+  script: index.py
+  
+- url: /.*
+  script: index.py
