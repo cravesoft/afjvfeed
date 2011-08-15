@@ -10,7 +10,7 @@ from google.appengine.api import urlfetch
 from google.appengine.ext import db
 from xml.dom import minidom 
 
-AFJV_URL = 'http://emploi.afjv.com/emploi_afjv_rss.xml'
+AFJV_URL = 'http://emploi.afjv.com/afjv_rss.xml'
 METIERS = ['Administratif', 'Commercial / Marketing', 'Conception',
     u'Développement', 'Infographie', 'Management', 'Musique / Son', 'Presse / Communication',
     'Production', 'Support / Hotline', 'Technique',
