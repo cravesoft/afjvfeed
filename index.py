@@ -15,7 +15,20 @@ METIERS = ['Administratif', 'Commercial / Marketing', 'Conception',
     u'Développement', 'Infographie', 'Management', 'Musique / Son', 'Presse / Communication',
     'Production', 'Support / Hotline', 'Technique',
     'Test / QA', 'Trad. / Localisation', 'Web / Internet']
-PAYS = ['Angleterre', 'Allemagne', 'Belgique', 'Canada', 'Chine', u'Corée', 'Espagne', 'France', 'Italie', 'Japon']
+PAYS = {
+    'Allemagne': ['Germany', 'Allemagne'],
+    'Belgique': ['Belgium', 'Belgique'],
+    'Canada': ['Canada'],
+    'Chine': ['China', 'Chine'],
+    u'Corée': ['Korea', u'Corée'],
+    'Espagne': ['Spain', 'Espagne', u'España'],
+    'Etats-Unis': ['Etats-Unis', 'United States'],
+    'France': ['France'],
+    'Italie': ['Italy', 'Italie'],
+    'Japon': ['Japan', 'Japon'],
+    u'Nouvelle-Zélande': [u'Nouvelle-Zélande', 'New Zealand'],
+    'Royaume-Uni': ['United Kingdom', 'Angleterre'],
+}
 ROLES = ['Emploi', 'Stage']
 
 class Request(db.Model):
@@ -44,7 +57,7 @@ class MainPage(webapp.RequestHandler):
     })
     
     countries = []
-    for country in PAYS:
+    for country, code in PAYS.iteritems():
       countries.append({
         'type': u'checkbox',
         'name': country,
@@ -78,12 +91,10 @@ class MainPage(webapp.RequestHandler):
       if not add_role:
         categories.append(role)
     
-    for country in PAYS:
-      add_country = self.request.get_all(country)
-      if not add_country:
-        categories.append(country)
-        if country == "Allemagne":
-          categories.append("Germany")
+    for country, codes in PAYS.iteritems():
+        add_country = self.request.get_all(country)
+        if not add_country:
+          categories = categories + codes
     
     for job in METIERS:
       add_job = self.request.get_all(job)
