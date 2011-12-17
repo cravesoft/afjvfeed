@@ -27,7 +27,10 @@ PAYS = {
     'Italie': ['Italy', 'Italie'],
     'Japon': ['Japan', 'Japon'],
     u'Nouvelle-Zélande': [u'Nouvelle-Zélande', 'New Zealand'],
+    'Roumanie': ['Romania', 'Romanie'],
     'Royaume-Uni': ['United Kingdom', 'Angleterre'],
+    'Ukraine': ['Ukraine'],
+    'Vietnam': ['Vietnam']
 }
 ROLES = ['Emploi', 'Stage']
 
