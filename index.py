@@ -32,6 +32,7 @@ PAYS = {
     'Philippines': ['Philipinnes', 'Philippines'],
     'Roumanie': ['Romania', 'Romanie'],
     'Royaume-Uni': ['United Kingdom', 'Angleterre'],
+    'Suisse': ['Switzerland', 'Suisse'],
     'Ukraine': ['Ukraine'],
     'Vietnam': ['Vietnam']
 }
