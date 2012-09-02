@@ -67,7 +67,7 @@ class MainPage(webapp.RequestHandler):
     })
     
     countries = []
-    for country, code in PAYS.iteritems():
+    for country, code in sorted(PAYS.items()):
       countries.append({
         'type': u'checkbox',
         'name': country,
@@ -101,7 +101,7 @@ class MainPage(webapp.RequestHandler):
       if not add_role:
         categories.append(role)
     
-    for country, codes in PAYS.iteritems():
+    for country, codes in sorted(PAYS.items()):
         add_country = self.request.get_all(country)
         if not add_country:
           categories = categories + codes
