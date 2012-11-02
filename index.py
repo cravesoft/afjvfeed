@@ -12,34 +12,9 @@ from xml.dom import minidom
 
 AFJV_URL = 'http://emploi.afjv.com/afjv_rss.xml'
 METIERS = ['Administratif', 'Commercial / Marketing', 'Conception',
-    u'Développement', 'Infographie', 'Management', 'Musique / Son', 'Presse / Communication',
-    'Production', 'Support / Hotline', 'Technique',
+    u'Développement', 'Divers', 'Infographie', 'Management', 'Musique / Son',
+    'Presse / Communication', 'Production', 'Support / Hotline', 'Technique',
     'Test / QA', 'Trad. / Localisation', 'Web / Internet']
-PAYS = {
-    'Allemagne': ['Germany', 'Allemagne'],
-    'Argentine': ['Argentina', 'Argentine'],
-    'Belgique': ['Belgium', 'Belgique'],
-    'Canada': ['Canada'],
-    'Chine': ['China', 'Chine'],
-    u'Corée': ['Korea', u'Corée'],
-    'Danemark': ['Denmark', 'Danemark'],
-    'Espagne': ['Spain', 'Espagne', u'España'],
-    'Etats-Unis': ['United States', 'Etats-Unis', 'USA'],
-    'France': ['France'],
-    'Irlande': ['Ireland', 'Irlande'],
-    'Italie': ['Italy', 'Italie'],
-    'Japon': ['Japan', 'Japon'],
-    'Luxembourg': ['Luxembourg'],
-    'Mexique': ['Mexico', 'Mexique'],
-    u'Nouvelle-Zélande': ['New Zealand', u'Nouvelle-Zélande'],
-    'Philippines': ['Philipinnes', 'Philippines'],
-    'Roumanie': ['Romania', 'Romanie'],
-    'Royaume-Uni': ['United Kingdom', 'Angleterre'],
-    u'Corée du sud': ['South Korea', u'Corée du sud'],
-    'Suisse': ['Switzerland', 'Suisse'],
-    'Ukraine': ['Ukraine'],
-    'Vietnam': ['Vietnam']
-}
 ROLES = ['Emploi', 'Stage']
 
 class Request(db.Model):
@@ -67,19 +42,6 @@ class MainPage(webapp.RequestHandler):
       'inputs': roles
     })
     
-    countries = []
-    for country, code in sorted(PAYS.items()):
-      countries.append({
-        'type': u'checkbox',
-        'name': country,
-        'value': country
-      })
-      
-    fieldsets.append({
-      'legend': u'Pays',
-      'inputs': countries,
-    })
-    
     jobs = []
     for job in METIERS:
       jobs.append({
@@ -101,11 +63,6 @@ class MainPage(webapp.RequestHandler):
       add_role = self.request.get_all(role)
       if not add_role:
         categories.append(role)
-    
-    for country, codes in sorted(PAYS.items()):
-        add_country = self.request.get_all(country)
-        if not add_country:
-          categories = categories + codes
     
     for job in METIERS:
       add_job = self.request.get_all(job)
